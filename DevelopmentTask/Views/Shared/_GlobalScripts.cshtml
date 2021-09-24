@@ -1,0 +1,264 @@
+﻿<script language="javascript">
+
+    var key;
+
+    function Init() {
+
+        $(function () {
+            loadTable();
+
+            AjaxApi("@Url.Action("SystemList", "Tasks")", {})
+                .done(function (data) {
+                    var $ddlSystem = $('#ddl-systemlist');
+                    var $ddlSystemV = $('#ddl-systemlist-v');
+                    (data.details).forEach((item) => {
+                        $ddlSystem.append($("<option></option>").val(item.Code).html(item.Name));
+                        $ddlSystemV.append($("<option></option>").val(item.Code).html(item.Name));
+                    });
+                });
+
+            AjaxApi("@Url.Action("GetAllMIS", "Tasks")", {})
+            .done(function (data) {
+                var $ddlMIS = $('#ddl-mislist');
+                var $ddlMISV = $('#ddl-mislist-v');
+                (data.details).forEach((item) => {
+                    $ddlMIS.append($("<option></option>").val(item.Value).html(item.Text));
+                    $ddlMISV.append($("<option></option>").val(item.Value).html(item.Text));
+                });
+            });
+
+            AjaxApi("@Url.Action("GetAllEmployee", "Tasks")", {})
+            .done(function (data) {
+                var $ddlReq = $('#ddl-reqlist');
+                var $ddlReqV = $('#ddl-reqlist-v');
+                (data.details).forEach((item) => {
+                    $ddlReq.append($("<option></option>").val(item.Value).html(item.Text));
+                    $ddlReqV.append($("<option></option>").val(item.Value).html(item.Text));
+                });
+            });
+        });
+
+    }
+
+    function Add() {
+        var $btnAdd = $('#btnAddTask');
+        $btnAdd.click(function (e) {
+            e.preventDefault();
+
+            if (confirm("Do you wish to save this?") == true) {
+                var ddlSystem = $('#ddl-systemlist');
+                var ddlPhase = $('#ddl-phase');
+                var txtTitle = $('#txt-title');
+                var txtDetails = $('#txt-details');
+                var txtRemarks = $('#txt-remarks');
+                var ddlAssignedTo = $('#ddl-mislist');
+                var ddlReqBy = $('#ddl-reqlist');
+                var dtReqDate = $('#dt-reqdate');
+
+                //var radDifficultyVal = parseInt($("input[name=rad-difficulty]:checked").val());
+                var data = {};
+                data.Code = ddlSystem.val();
+                data.Phase = ddlPhase.val();
+                data.Title = txtTitle.val().trim();
+                data.Details = txtDetails.val().trim() == "" ? " " : txtDetails.val().trim();
+                data.Remarks = txtRemarks.val().trim() == "" ? " " : txtRemarks.val().trim();
+                data.Difficulty = parseInt($("input[name=rad-difficulty]:checked").val());
+                data.Status = parseInt($("input[name=rad-status]:checked").val());
+                data.AssignedTo = ddlAssignedTo.val();
+                data.ReqBy = ddlReqBy.val();
+                data.ReqDate = dtReqDate.val();
+
+                console.log(data)
+
+                if (data.Code == null) {
+                    $.notify("[System] is Required!", "error");
+                    return false;
+                }
+                if (data.Phase == null) {
+                    $.notify("[Phase] is Required!", "error");
+                    return false;
+                }
+                if (isNaN(data.ReqBy) || data.ReqBy == null) {
+                    $.notify("[Request By] is Required!", "error");
+                    return false;
+                }
+                if (new Date(data.ReqDate) == 'Invalid Date' || data.ReqDate == '') {
+                    $.notify("[Request Date] is Required!", "error");
+                    return false;
+                }
+
+                AjaxApi("@Url.Action("AddTask", "Tasks")", JSON.stringify(data))
+                .fail(function (data) {
+                    $.notify(data.ResponseText, "error");
+                })
+            .done(function (data) {
+
+                $('#modalCreateTask').modal('hide');
+
+                $.notify("Task added!", "success");
+
+                $('#txtSearch').val('');
+                dataTable.ajax.reload();
+            });
+            }
+        });
+    }
+
+
+    function View(id) {
+        console.log(id);
+        AjaxApi("@Url.Action("GetTask", "Tasks")", '{id:' + JSON.stringify(id) + '}')
+            .fail(function (data) {
+                $.notify(data.ResponseText, "error");
+            })
+        .done(function (data) {
+            var d = data.details;
+
+            $('.modal-title').html('View Task <span class="badge badge-' + GetDifficulty(d.Difficulty) + '">' + GetDifficulty(d.Difficulty) + '</span> ' +
+                            '<span class="badge badge-' + GetStatus(d.Status) + '">' + GetStatus(d.Status) + '</span>')
+            $('#lbl-systemname').text(d.Name);
+            $('#lbl-phase').text(d.Phase);
+            $('#lbl-encby').text(d.EncName);
+            $('#lbl-encdate').text(d.EncDate);
+
+            $('#lbl-title').text(d.Title);
+            $('#lbl-details').html(d.Details.replace(/\n/gi, "<br />"));
+            $('#lbl-remarks').html(d.Remarks.replace(/\n/gi,"<br />"));
+
+            $('#lbl-reqby').text(d.ReqName);
+            $('#lbl-reqdate').text(d.ReqDate);
+            $('#lbl-modby').text(d.ModName);
+            $('#lbl-moddate').text(d.ModDate);
+
+            $('#lbl-assignedto').text(d.ToName);
+
+            $('#lbl-doneby').text(d.DoneName);
+            $('#lbl-donedate').text(d.DoneDate);
+
+            $('#modalViewTask').modal('show');
+        });
+    }
+
+    function Edit(id) {
+        key = id;
+        AjaxApi("@Url.Action("GetTask", "Tasks")", '{id:' + JSON.stringify(id) + '}')
+                .fail(function (data) {
+                    $.notify(data.ResponseText, "error");
+                })
+                .done(function (data) {
+                    var d = data.details;
+                    $('#btnUpdate').attr("data-id", d.id);
+
+                    $('#ddl-systemlist-v').val(d.Code);
+                    $('#ddl-phase-v').val(d.Phase);
+                    $('#txt-title-v').val(d.Title);
+                    $('#txt-details-v').val(d.Details);
+                    $('#txt-remarks-v').val(d.Remarks);
+                    $('#ddl-mislist-v').val(d.AssignedTo);
+                    $('#ddl-reqlist-v').val(d.ReqBy);
+                    $('#dt-reqdate-v').val(d.ReqDate);
+
+                    $("input[name=rad-difficulty-v][value=" + d.Difficulty + "]").prop('checked', true);
+                    $("input[name=rad-status-v][value=" + d.Status + "]").prop('checked', true);
+
+                    $('#modalEditTask').modal('show');
+                });
+    }
+    function Update() {
+
+        $('#btnUpdate').click(function () {
+
+            if (confirm('Do you wish to save this?') == true) {
+
+                var ddlSystem = $('#ddl-systemlist-v');
+                var ddlPhase = $('#ddl-phase-v');
+                var txtTitle = $('#txt-title-v');
+                var txtDetails = $('#txt-details-v');
+                var txtRemarks = $('#txt-remarks-v');
+                var ddlAssignedTo = $('#ddl-mislist-v');
+                var ddlReqBy = $('#ddl-reqlist-v');
+                var dtReqDate = $('#dt-reqdate-v');
+
+                //var radDifficultyVal = parseInt($("input[name=rad-difficulty]:checked").val());
+                var data = {};
+                data.Code = ddlSystem.val();
+                data.Phase = ddlPhase.val();
+                data.Title = txtTitle.val().trim();
+                data.Details = txtDetails.val().trim() == "" ? " " : txtDetails.val().trim();
+                data.Remarks = txtRemarks.val().trim() == "" ? " " : txtRemarks.val().trim();
+
+                data.Difficulty = parseInt($("input[name=rad-difficulty-v]:checked").val());
+                data.Status = parseInt($("input[name=rad-status-v]:checked").val());
+                data.AssignedTo = ddlAssignedTo.val();
+                data.ReqBy = ddlReqBy.val();
+                data.ReqDate = dtReqDate.val();
+                data.id = key;
+
+                console.log(data);
+
+                AjaxApi("@Url.Action("UpdateTask", "Tasks")", '{obj:' + JSON.stringify(data) + '}')
+                .fail(function (data) {
+                    $.notify(data.ResponseText, "error");
+                })
+                .done(function (data) {
+                    $.notify("Task Updated Successfully!","success");
+
+                    dataTable.ajax.reload();
+
+                    $('#modalEditTask').modal('hide');
+                });
+
+            }
+        });
+
+
+    }
+
+    function Done(id, status) {
+        if (status == 2) {
+            $.notify("This task is already [Done]", "error");
+            return false;
+        }
+        key = id;
+        $("#btnDoneTask").attr('data-id', id);
+        $('#modalDoneTask').modal('show');
+    }
+    var data = {};
+    $(function () {
+        $("#btnDoneTask").click(function () {
+            if (confirm("Do you wish to error?") == true) {
+                //var tid = $(this).data('id');
+                data = {}
+                data.id = key;
+                data.Remarks = $('#txt-remarks-d').val().trim() == "" ? "-" : $('#txt-remarks-d').val().trim();
+                console.log(data);
+                console.log(key);
+                AjaxApi("@Url.Action("DoneTask", "Tasks")", '{obj:' + JSON.stringify(data) + '}')
+                .fail(function (data) {
+                    $.notify(data.ResponseText, "error");
+                })
+                .done(function (data) {
+                    $.notify("Task Done Successfully!","success");
+
+                    dataTable.ajax.reload();
+
+                    $('#modalDoneTask').modal('hide');
+                });
+            }
+        });
+        $('#modalCreateTask').on('show.bs.modal', function () {
+            $('#dt-reqdate').val(new Date().toLocaleDateString('en-CA'));
+        });
+
+
+        //$('.nav-item').hover(
+        //    function(){
+        //        $(this).find('.shaker').addClass(' shaking');
+        //    },
+        //    function(){
+        //        $(this).find('.shaker').removeClass('shaking');
+        //    }
+        //);
+    });
+
+</script>

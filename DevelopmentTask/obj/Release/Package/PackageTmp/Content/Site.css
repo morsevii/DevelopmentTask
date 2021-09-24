@@ -1,0 +1,55 @@
+﻿td {
+    vertical-align: middle!important;
+}
+th {
+    /*position: relative;
+    bottom: -10px;*/
+    vertical-align: middle!important;
+}
+th input[type="checkbox"] {
+    
+    margin-block: 6px 0px!important;
+}
+
+td input[type="checkbox"] {
+    margin-block: 6px 0px!important;
+}
+.chkbx {
+    width: -webkit-fill-available;
+}
+
+.badge {
+    color: white!important;
+}
+
+.badge {
+    color: white!important;
+}
+.badge.badge-light {
+    color: black!important;
+}
+
+.badge-High {color:#fff;background-color:#e74a3b}
+.badge-Medium {color:#fff;background-color:#f6c23e}
+.badge-Low {color:#fff;background-color:#858796}
+
+.badge-Pending {color:#fff;background-color:#e74a3b}
+.badge-On-going {color:#fff;background-color:#f6c23e}
+.badge-Done {color:#fff;background-color:#1cc88a}
+
+/*dd p {
+    
+    border: 1px solid black;
+    padding: 0 5px;
+    border-radius: 3px;
+}*/
+
+.shaker:hover {
+   animation: shake .3s infinite;
+}
+
+@keyframes shake {
+  0%   {transform: rotate(-10deg);}
+  50% {transform: rotate(10deg);}
+  100% {transform: rotate(-10deg);}
+}

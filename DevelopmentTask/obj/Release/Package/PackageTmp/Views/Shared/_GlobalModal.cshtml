@@ -1,0 +1,357 @@
+﻿@*@*Add Task Modal*@
+<div class="modal fade" id="modalCreateTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="formAddTask">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 font-weight-bold">Create a task</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="form-group row">
+                        <label for="ddl-systemlist" class="col-sm-2 col-form-label">System</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-systemlist">
+                                <option value="0" selected disabled>Select a system</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-phase" class="col-sm-2 col-form-label">Phase</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-phase">
+                                <option value="0" selected disabled>Select a phase</option>
+                                @for (var i = 1; i <= 20; i++)
+                                {
+                                    <option value="@i">Phase @i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txt-title" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Difficulty</label>
+                        <div class="col-sm-10">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="0" checked name="rad-difficulty"><span class="badge badge-danger">High</span>
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="1" name="rad-difficulty"><span class="badge bg-warning">Medium</span>
+                                </label>
+                            </div>
+                            <div class="form-check-inline disabled">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="2" name="rad-difficulty"><span class="badge bg-gradient-secondary">Low</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txt-details" class="col-sm-2 col-form-label">Details</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="txt-details"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-mislist" class="col-sm-2 col-form-label">Assigned To</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-mislist">
+                                <option value="0" selected>N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-reqlist" class="col-sm-2 col-form-label">Req.By</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-reqlist">
+                                <option value="0" selected disabled>N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dt-reqdate" class="col-sm-2 col-form-label">Req.Date</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="dt-reqdate" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <input type="reset" class="btn btn-default" value="Reset">
+                    <button class="btn btn-success" id="btnAddTask">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@*Edit Task Modal*@
+<div class="modal fade" id="modalEditTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="formUpdateTask">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 font-weight-bold">Edit Task</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="form-group row">
+                        <label for="ddl-systemlist" class="col-sm-2 col-form-label">System</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-systemlist-v">
+                                <option value="0" selected disabled>Select a system</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-phase" class="col-sm-2 col-form-label">Phase</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-phase-v">
+                                <option value="0" selected disabled>Select a phase</option>
+                                @for (var i = 1; i <= 20; i++)
+                                {
+                                    <option value="@i">Phase @i</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="txt-title-v" value="">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Difficulty</label>
+                        <div class="col-sm-10">
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="0" checked name="rad-difficulty-v"><span class="badge badge-danger">High</span>
+                                </label>
+                            </div>
+                            <div class="form-check-inline">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="1" name="rad-difficulty-v"><span class="badge bg-warning">Medium</span>
+                                </label>
+                            </div>
+                            <div class="form-check-inline disabled">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" value="2" name="rad-difficulty-v"><span class="badge bg-gradient-secondary">Low</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txt-details" class="col-sm-2 col-form-label">Details</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="txt-details-v"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-mislist" class="col-sm-2 col-form-label">Assigned To</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-mislist-v">
+                                <option value="0" selected>N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ddl-reqlist" class="col-sm-2 col-form-label">Req.By</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="ddl-reqlist-v">
+                                <option value="0" selected disabled>N/A</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dt-reqdate" class="col-sm-2 col-form-label">Req.Date</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="dt-reqdate-v" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button data-dismiss="modal" class="btn btn-default">Close</button>
+                    <button class="btn btn-success" id="btnUpdate"><i class="fa fa-floppy-o" aria-hidden="true"></i> Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@*View Task Modal*@
+<div class="modal fade" id="modalViewTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 font-weight-bold">View Task</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body mx-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                System:
+                            </dt>
+                            <dd>
+                                <span id="lbl-systemname"></span>
+                            </dd>
+                            <dt>
+                                Phase:
+                            </dt>
+                            <dd>
+                                <span id="lbl-phase"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Encoded By:
+                            </dt>
+                            <dd>
+                                <span id="lbl-encby"></span>
+                            </dd>
+                            <dt>
+                                Encoded Date:
+                            </dt>
+                            <dd>
+                                <span id="lbl-encdate"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Assigned To:
+                            </dt>
+                            <dd>
+                                <span id="lbl-assignedto"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Completion:
+                            </dt>
+                            <dd>
+                                <span id="lbl-doneby"></span> - <span id="lbl-donedate"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Title:
+                            </dt>
+                            <dd>
+                                <span id="lbl-title"></span>
+                            </dd>
+                            <dt>
+                                Details:
+                            </dt>
+                            <dd>
+                                <p id="lbl-details"></p>
+                                @*<span id="lbl-details"></span>*@
+                            </dd>
+                            <dt>
+                                Remarks:
+                            </dt>
+                            <dd>
+                                <p id="lbl-remarks"></p>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Requested By:
+                            </dt>
+                            <dd>
+                                <span id="lbl-reqby"></span>
+                            </dd>
+                            <dt>
+                                Requested Date:
+                            </dt>
+                            <dd>
+                                <span id="lbl-reqdate"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal">
+                            <dt>
+                                Modified By:
+                            </dt>
+                            <dd>
+                                <span id="lbl-modby"></span>
+                            </dd>
+                            <dt>
+                                Modified Date:
+                            </dt>
+                            <dd>
+                                <span id="lbl-moddate"></span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex">
+                <button data-dismiss="modal" class="btn btn-primary">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Done Task Modal*@
+<div class="modal fade" id="modalDoneTask" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form id="formDoneTask">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100 font-weight-bold">View Task</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body mx-3">
+                    <div class="form-group row">
+                        <label for="txt-Remarks" class="col-sm-2 col-form-label">Remarks</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" id="txt-remarks"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex">
+                    <button id="btnDoneTask" class="btn btn-primary"><i class="fa fa-chech"></i> Done Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

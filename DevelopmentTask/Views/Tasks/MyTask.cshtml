@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewBag.Title = "My Tasks";
+}
+<div class="card shadow">
+    @Html.Partial("_CardHeader")
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("_Search")
+            </div>
+        </div>
+        <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>System</th>
+                        <th>Phase</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Difficulty</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>System</th>
+                        <th>Phase</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Difficulty</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        var dataTable;
+        $(function () {
+            setActive($('#aMyTasks'));
+            Init();
+            Add();
+            Update();
+        });
+        function loadTable() {
+            dataTable = $('#dataTable').DataTable({
+                processing: true, 'autoWidth': false,
+                ajax: {
+                    "async": true,
+                    "url": '@Url.Action("GetMyTask", "Tasks")',
+                    "type": "POST",
+                    data: function (d) {
+                        d.Search = $('#txtSearch').val().trim();
+                    },
+                    dataSrc: function (json) {
+                        return json.details;
+                    }
+                },
+                "columns": [{ data: 'Name' }, { data: 'Phase' },
+                    {
+                        data: 'Title',
+                        render: function (data, type, row) {
+                            //console.log(data);
+                            return type === 'display' && data.length > 30 ?
+                                data.substr(0, 30) + '…' :
+                                data;
+                        }
+                    },
+                    {
+                        data: 'Details',
+                        render: function (data, type, row) {
+                            //console.log(data);
+                            return type === 'display' && data.length > 30 ?
+                                data.substr(0, 30) + '…' :
+                                data;
+                        }
+                    },
+                    {
+                        data: null,
+                        class:"centered",
+                        mRender: function (d) {
+                            return '<span class="badge badge-' + GetDifficulty(d.Difficulty) + '">' + GetDifficulty(d.Difficulty) + '</span>'
+                        }
+                    }, {
+                        data: null,
+                        class: "centered",
+                        mRender: function (d) {
+                            return '<span class="badge badge-' + GetStatus(d.Status) + '">' + GetStatus(d.Status) + '</span>'
+                        }
+                    },
+                    {
+                        data: null,
+                        mRender: function (d) {
+                            return '' +
+                                    //'<a class="btn btn-primary btn-sm btn-edit" data-id="' + d.id + '">' +
+                                   '<a class="btn btn-primary btn-sm btn-edit" data-id="' + d.id + '" onclick="Edit(' + d.id + ')">' +
+                                   '<i class="fa fa-pencil" title="Edit" aria-hidden="true"></i>' +
+                                   '<span class="sr-only">Edit</span>' +
+                                   '</a> ' +
+                                   //'<a class="btn btn-info btn-sm btn-view" data-id="' + d.id + '">' +
+                                   '<a class="btn btn-info btn-sm btn-view" data-id="' + d.id + '" onclick="View(' + d.id + ')">' +
+                                   '<i class="fa fa-eye" title="View" aria-hidden="true"></i>' +
+                                   '<span class="sr-only">View</span>' +
+                                   '</a> ' +
+                                   '<a class="btn btn-success btn-sm btn-done" data-id="' + d.id + '" onclick="Done(' + d.id + ','+ d.Status +')">' +
+                                   '<i class="fa fa-check-square-o" title="Done" aria-hidden="true"></i>' +
+                                   '<span class="sr-only">Done</span>' +
+                                   '</a>';
+                        }
+                    },
+                ],
+                "searching": false,
+                "lengthMenu": [[100, 500, 1000, -1], [100, 500, 1000, "All", ]],
+                "bLengthChange": false,
+                "paging": false,
+                "pageLength": 100,
+                "columnDefs": [
+                    { "orderable": false, "targets": [-1] },
+                    { "searchable": false, "targets": [-1] },
+                ],
+                'language': {
+                    'loadingRecords': '&nbsp;',
+                    'processing': '<div class="loader" style="background-color:rgba(255,255,255,0.5)!important;">Loading, please wait...</div>'
+                },
+                //"initComplete": function (settings, json) {
+                //    $('.btn-view').click(function () {
+                //        View($(this).data('id'));
+                //    });
+                //    $('.btn-edit').click(function () {
+                //        Edit($(this).data('id'));
+                //    });
+                //    $('.btn-done').click(function () {
+                //        Done($(this).data('id'));
+                //    });
+                //}
+            })
+
+        }
+
+    </script>
+    @Html.Partial("_GlobalScripts")
+}

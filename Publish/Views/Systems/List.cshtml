@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "List of Systems";
+}
+@*@Model DevelopmentTask.Models*@
+
+<div class="card shadow">
+
+    @Html.Partial("_CardHeader")
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6 text-nowrap">
+
+            </div>
+            <div class="col-md-6">
+                @Html.Partial("_Search")
+            </div>
+        </div>
+        <div class="table-responsive table mt-2" role="grid" aria-describedby="dataTable_info">
+            <table class="table my-0" id="dataTable">
+                <thead>
+                    <tr>
+                        <th>System</th>
+                        <th>Accomplishment Date</th>
+                        <th>Pending</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @*@{
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.AccomplishmentDate</td>
+                                <td>@item.Pending / @item.Total</td>
+                                <td>
+                                    <a class="btn btn-info btn-sm btn-view" href="@Url.Action("Tasks", "Systems")/@item.Code/@item.Name.Trim().Replace(" ","_")" data-id="@item.id">
+                                        <i class="fa fa-eye" title="View" aria-hidden="true"></i>
+                                        <span class="sr-only">View</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    }*@
+
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>System</th>
+                        <th>Programmer</th>
+                        <th>Pending</th>
+                        <th>Action</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" defer>
+        var dataTable;
+        $(function () {
+            setActive($('#aSystems'));
+            Init();
+            Add();
+        });
+
+        function loadTable() {
+            dataTable = $('#dataTable').DataTable({
+                processing: true, 'autoWidth': false,
+                ajax: {
+                    "async": true,
+                    "url": '@Url.Action("GetSystemList", "Systems")',
+                    "type": "POST",
+                    data: function (d) {
+                        d.Search = $('#txtSearch').val().trim();
+                    },
+                    dataSrc: function (json) {
+                        return json.details;
+                    }
+                },
+                "columns": [
+                    { data: 'Name' },
+                    { data: 'AccomplishmentDate' },
+                    {
+                        data: null,
+                        mRender: function (d) {
+                            return d.Pending + ' / ' + d.Total;
+                        }
+
+                    },
+                    {
+                        data: null,
+                        mRender: function (d) {
+                            return '<a class="btn btn-info btn-sm btn-view" href="@Url.Action("Tasks", "Systems")/' + d.Code + '/' + d.Name + '" data-id="' + d.id + '" data-system-code="' + d.Code + '">' +
+                                   '<i class="fa fa-eye" title="View" aria-hidden="true"></i>' +
+                                   '<span class="sr-only">View</span>' +
+                                   '</a>';
+                        }
+                    },
+                ],
+                "order": [[ 2, "desc" ]],
+                "searching": false,
+                "lengthMenu": [[100, 500, 1000, -1], [100, 500, 1000, "All", ]],
+                "bLengthChange": false,
+                "paging": false,
+                "pageLength": 100,
+                "columnDefs": [
+                    { "orderable": false, "targets": [-1] },
+                    { "searchable": false, "targets": [-1] },
+                    //{ "width": "30%", "targets": 0 },
+                    //{ "width": "20%", "targets": 1 },
+                    //{ "width": "20%", "targets": 2 },
+                    //{ "width": "30%", "targets": 3 },
+                ],
+                'language': {
+                    'loadingRecords': '&nbsp;',
+                    'processing': '<div class="loader" style="background-color:rgba(255,255,255,0.5)!important;">Loading, please wait...</div>'
+                }
+            });
+        }
+
+
+    </script>
+
+    @Html.Partial("_GlobalScripts")
+}
+
