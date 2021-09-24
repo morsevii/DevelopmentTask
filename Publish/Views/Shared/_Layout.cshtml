@@ -33,7 +33,7 @@
                     <li class="nav-item" id="aMyTasks"><a class="nav-link" href="@Url.Action("MyTask", "Tasks")"><i class="fas fa-window-maximize shaker"></i><span>My Tasks</span></a></li>
                     <li class="nav-item" id="aAllTasks"><a class="nav-link" href="@Url.Action("All", "Tasks")"><i class="fas fa-list shaker"></i><span>All Tasks</span></a></li>
                     <li class="nav-item" id="aSystems"><a class="nav-link" href="@Url.Action("List", "Systems")"><i class="fas fa-th-large shaker"></i><span>Systems</span></a></li>
-                    <li class="nav-item" id=""><a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fas fa-cogs shaker"></i><span>Settings</span></a></li>
+                    @*<li class="nav-item" id=""><a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fas fa-cogs shaker"></i><span>Settings</span></a></li>*@
                 </ul><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
                 <div class="text-center d-none d-md-inline"></div>
             </div>
@@ -139,6 +139,7 @@
                                 <div class="nav-item dropdown no-arrow">
                                     <a aria-expanded="false" data-toggle="dropdown" class="dropdown-toggle nav-link" href="#">
                                         <span class="d-none d-lg-inline mr-2 text-gray-600 small">
+                                                <i class="fa fa-user"></i> 
                                                 @if (!string.IsNullOrEmpty((string)Session["Employee_ID"]))
                                                 {
                                                     @Session["FullName"].ToString();
@@ -175,10 +176,10 @@
     <script src="~/Scripts/dataTables.bootstrap4.min.js"></script>
     @*Scripts*@
     <script src="~/Scripts/MyScripts/Master.js"></script>
-    @RenderSection("Scripts", false);
+    @RenderSection("Scripts", false)
 
     @*Modals*@
-    @RenderSection("Modals", false);
+    @RenderSection("Modals", false)
 
     @Html.Partial("_GlobalModal")
 </body>

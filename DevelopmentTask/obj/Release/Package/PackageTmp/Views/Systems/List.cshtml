@@ -86,7 +86,7 @@
                     {
                         data: null,
                         mRender: function (d) {
-                            return d.Pending + ' / ' + d.Total;
+                            return (d.Pending + d.Ongoing) + ' / ' + d.Total;
                         }
 
                     },

@@ -10,13 +10,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DevelopmentTask.dll">
-      <publishTime>09/18/2021 13:33:29</publishTime>
+      <publishTime>09/24/2021 09:24:59</publishTime>
     </File>
     <File Include="bin/Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll">
       <publishTime>06/15/2015 02:06:24</publishTime>
     </File>
     <File Include="bin/Microsoft.Web.Infrastructure.dll">
       <publishTime>04/23/2012 15:23:58</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/03/2014 20:33:56</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>06/18/2015 20:19:46</publishTime>
@@ -54,8 +57,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/roslyn/VBCSCompiler.exe.config">
       <publishTime>06/18/2015 20:19:46</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>11/28/2018 13:00:36</publishTime>
+    </File>
+    <File Include="bin/System.Web.Cors.dll">
+      <publishTime>11/28/2018 12:58:44</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>01/28/2015 04:04:30</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>11/28/2018 13:01:00</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>01/28/2015 04:02:18</publishTime>
@@ -74,6 +86,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Content/bootstrap.min.css">
       <publishTime>09/16/2021 09:27:59</publishTime>
+    </File>
+    <File Include="Content/dataTables.bootstrap4.min.css">
+      <publishTime>09/13/2021 15:40:56</publishTime>
     </File>
     <File Include="Content/fonts/fa-brands-400.eot">
       <publishTime>09/11/2021 09:49:25</publishTime>
@@ -147,14 +162,233 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Content/fonts/fontawesome5-overrides.min.css">
       <publishTime>09/11/2021 09:49:25</publishTime>
     </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN44Y9vEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN44Y9vFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN44Y9vHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN44Y9vKUT8.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN44Y9vOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4AYdvEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4AYdvFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4AYdvHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4AYdvKUT8.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4AYdvOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4kYNvEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4kYNvFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4kYNvHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4kYNvKUT8.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4kYNvOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4oZNvEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:15</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4oZNvFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:14</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4oZNvHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:13</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4oZNvKUT8.woff2">
+      <publishTime>09/16/2021 10:28:15</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN4oZNvOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:13</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5cYtvEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5cYtvFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:17</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5cYtvHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:16</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5cYtvKUT8.woff2">
+      <publishTime>09/16/2021 10:28:18</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5cYtvOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:17</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5MZ9vEUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:13</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5MZ9vFUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:13</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5MZ9vHUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:12</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5MZ9vKUT8.woff2">
+      <publishTime>09/16/2021 10:28:13</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXQ3I6Li01BKofIMN5MZ9vOUT8_DQ.woff2">
+      <publishTime>09/16/2021 10:28:12</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXV3I6Li01BKofIMeaBXso.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXV3I6Li01BKofINeaB.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXV3I6Li01BKofIO-aBXso.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXV3I6Li01BKofIOOaBXso.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXV3I6Li01BKofIOuaBXso.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA-seUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA-seUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA-seUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA-seUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA-seUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA6sKUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA6sKUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA6sKUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA6sKUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofA6sKUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAjsOUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAjsOUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:20</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAjsOUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAjsOUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAjsOUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAksCUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:20</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAksCUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAksCUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAksCUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAksCUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAnsSUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAnsSUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAnsSUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAnsSUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAnsSUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAtsGUb-vISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAtsGUbOvISTs.woff2">
+      <publishTime>09/16/2021 10:28:20</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAtsGUbuvISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAtsGUYevI.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXW3I6Li01BKofAtsGUZevISTs.woff2">
+      <publishTime>09/16/2021 10:28:19</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXX3I6Li01BKofIMNaDRs4.woff2">
+      <publishTime>09/16/2021 10:28:16</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXX3I6Li01BKofIMNaHRs71cA.woff2">
+      <publishTime>09/16/2021 10:28:16</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXX3I6Li01BKofIMNaMRs71cA.woff2">
+      <publishTime>09/16/2021 10:28:17</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXX3I6Li01BKofIMNaNRs71cA.woff2">
+      <publishTime>09/16/2021 10:28:17</publishTime>
+    </File>
+    <File Include="Content/fonts/google/XRXX3I6Li01BKofIMNaORs71cA.woff2">
+      <publishTime>09/16/2021 10:28:16</publishTime>
+    </File>
+    <File Include="Content/googleapis.css">
+      <publishTime>09/16/2021 10:42:37</publishTime>
+    </File>
     <File Include="Content/Site.css">
-      <publishTime>09/18/2021 13:11:17</publishTime>
+      <publishTime>09/22/2021 14:35:20</publishTime>
     </File>
     <File Include="Global.asax">
       <publishTime>09/10/2021 15:47:19</publishTime>
     </File>
+    <File Include="icon.ico">
+      <publishTime>09/15/2021 13:06:26</publishTime>
+    </File>
     <File Include="packages.config">
-      <publishTime>09/13/2021 13:58:32</publishTime>
+      <publishTime>09/22/2021 15:45:43</publishTime>
+    </File>
+    <File Include="Scripts/bootstrap.bundle.min.js.map">
+      <publishTime>09/14/2021 08:59:25</publishTime>
     </File>
     <File Include="Scripts/bootstrap.min.js">
       <publishTime>09/11/2021 09:49:25</publishTime>
@@ -164,6 +398,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Scripts/chart.min.js">
       <publishTime>09/11/2021 09:49:25</publishTime>
+    </File>
+    <File Include="Scripts/dataTables.bootstrap4.min.js">
+      <publishTime>09/13/2021 15:41:03</publishTime>
     </File>
     <File Include="Scripts/jquery-3.6.0.js">
       <publishTime>09/11/2021 08:27:48</publishTime>
@@ -183,6 +420,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/jquery-3.6.0.slim.min.map">
       <publishTime>09/11/2021 08:27:48</publishTime>
     </File>
+    <File Include="Scripts/jquery.dataTables.min.js">
+      <publishTime>09/13/2021 15:41:06</publishTime>
+    </File>
     <File Include="Scripts/jquery.easing.js">
       <publishTime>09/11/2021 09:56:18</publishTime>
     </File>
@@ -193,7 +433,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/11/2021 08:28:28</publishTime>
     </File>
     <File Include="Scripts/MyScripts/Master.js">
-      <publishTime>09/18/2021 10:47:52</publishTime>
+      <publishTime>09/21/2021 11:20:59</publishTime>
     </File>
     <File Include="Scripts/MyScripts/MyTask.js">
       <publishTime>09/13/2021 11:25:32</publishTime>
@@ -204,6 +444,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Scripts/theme.js">
       <publishTime>09/11/2021 09:49:25</publishTime>
     </File>
+    <File Include="Views/Error/E404.cshtml">
+      <publishTime>09/22/2021 14:52:06</publishTime>
+    </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>09/14/2021 09:20:25</publishTime>
     </File>
@@ -211,31 +454,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/18/2021 11:22:23</publishTime>
     </File>
     <File Include="Views/Shared/_CardHeader.cshtml">
-      <publishTime>09/14/2021 10:13:09</publishTime>
+      <publishTime>09/22/2021 11:58:29</publishTime>
     </File>
     <File Include="Views/Shared/_GlobalModal.cshtml">
-      <publishTime>09/17/2021 12:00:46</publishTime>
+      <publishTime>09/21/2021 11:05:40</publishTime>
     </File>
     <File Include="Views/Shared/_GlobalScripts.cshtml">
-      <publishTime>09/17/2021 12:04:02</publishTime>
+      <publishTime>09/22/2021 13:59:59</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>09/18/2021 13:12:01</publishTime>
+      <publishTime>09/23/2021 14:03:38</publishTime>
     </File>
     <File Include="Views/Shared/_Search.cshtml">
       <publishTime>09/14/2021 10:53:02</publishTime>
     </File>
     <File Include="Views/Systems/List.cshtml">
-      <publishTime>09/14/2021 14:22:19</publishTime>
+      <publishTime>09/22/2021 15:16:57</publishTime>
     </File>
     <File Include="Views/Systems/Tasks.cshtml">
-      <publishTime>09/17/2021 11:25:33</publishTime>
+      <publishTime>09/21/2021 13:05:52</publishTime>
     </File>
     <File Include="Views/Tasks/All.cshtml">
-      <publishTime>09/17/2021 11:25:25</publishTime>
+      <publishTime>09/21/2021 13:05:38</publishTime>
     </File>
     <File Include="Views/Tasks/MyTask.cshtml">
-      <publishTime>09/17/2021 11:25:20</publishTime>
+      <publishTime>09/21/2021 13:05:33</publishTime>
     </File>
     <File Include="Views/web.config">
       <publishTime>09/10/2021 15:47:19</publishTime>
@@ -244,7 +487,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2021 16:07:41</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/18/2021 13:33:29</publishTime>
+      <publishTime>09/24/2021 09:24:59</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -1,4 +1,7 @@
-﻿td {
+﻿body {
+    font-size: 0.8rem;
+}
+td {
     vertical-align: middle!important;
 }
 th {
@@ -44,9 +47,30 @@ td input[type="checkbox"] {
     border-radius: 3px;
 }*/
 
-.shaker:hover {
+.centered {
+    text-align: center;
+}
+
+.shaker:hover, .shaking {
    animation: shake .3s infinite;
 }
+
+.nav-item:hover a i,
+.nav-item a:focus i,
+.sidebar-brand:hover .shaker,
+.sidebar-brand:focus .shaker
+{
+   animation: shake .3s infinite;
+}
+
+.nav-item a:focus::after {
+
+    content: ' -';
+    color: black;
+    /*font-family: "Font Awesome 5 Free";*/
+}
+
+
 
 @keyframes shake {
   0%   {transform: rotate(-10deg);}

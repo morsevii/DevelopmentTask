@@ -7,7 +7,7 @@
 });
 
 function GetDifficulty(i) { return ["High", "Medium", "Low"][i] }
-function GetStatus(i) { return ["On-going", "Done"][i] }
+function GetStatus(i) { return ["Pending", "On-going", "Done"][i] }
 
 let setActive = (elem) => $(elem).find('a').addClass("active");
 

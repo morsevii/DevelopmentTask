@@ -31,3 +31,10 @@ D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.
 D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\obj\Release\DevelopmentTask.csprojResolveAssemblyReference.cache
 D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\obj\Release\DevelopmentTask.dll
 D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\obj\Release\DevelopmentTask.pdb
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\Newtonsoft.Json.dll
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.Net.Http.Formatting.dll
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.Web.Cors.dll
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.Web.Http.dll
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\Newtonsoft.Json.xml
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.Net.Http.Formatting.xml
+D:\My Documents\Desktop\Repositories\DevelopmentTask\DevelopmentTask\bin\System.Web.Http.xml

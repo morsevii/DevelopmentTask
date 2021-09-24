@@ -50,6 +50,7 @@
                 var ddlPhase = $('#ddl-phase');
                 var txtTitle = $('#txt-title');
                 var txtDetails = $('#txt-details');
+                var txtRemarks = $('#txt-remarks');
                 var ddlAssignedTo = $('#ddl-mislist');
                 var ddlReqBy = $('#ddl-reqlist');
                 var dtReqDate = $('#dt-reqdate');
@@ -60,7 +61,9 @@
                 data.Phase = ddlPhase.val();
                 data.Title = txtTitle.val().trim();
                 data.Details = txtDetails.val().trim() == "" ? " " : txtDetails.val().trim();
+                data.Remarks = txtRemarks.val().trim() == "" ? " " : txtRemarks.val().trim();
                 data.Difficulty = parseInt($("input[name=rad-difficulty]:checked").val());
+                data.Status = parseInt($("input[name=rad-status]:checked").val());
                 data.AssignedTo = ddlAssignedTo.val();
                 data.ReqBy = ddlReqBy.val();
                 data.ReqDate = dtReqDate.val();
@@ -150,11 +153,13 @@
                     $('#ddl-phase-v').val(d.Phase);
                     $('#txt-title-v').val(d.Title);
                     $('#txt-details-v').val(d.Details);
+                    $('#txt-remarks-v').val(d.Remarks);
                     $('#ddl-mislist-v').val(d.AssignedTo);
                     $('#ddl-reqlist-v').val(d.ReqBy);
                     $('#dt-reqdate-v').val(d.ReqDate);
 
                     $("input[name=rad-difficulty-v][value=" + d.Difficulty + "]").prop('checked', true);
+                    $("input[name=rad-status-v][value=" + d.Status + "]").prop('checked', true);
 
                     $('#modalEditTask').modal('show');
                 });
@@ -169,6 +174,7 @@
                 var ddlPhase = $('#ddl-phase-v');
                 var txtTitle = $('#txt-title-v');
                 var txtDetails = $('#txt-details-v');
+                var txtRemarks = $('#txt-remarks-v');
                 var ddlAssignedTo = $('#ddl-mislist-v');
                 var ddlReqBy = $('#ddl-reqlist-v');
                 var dtReqDate = $('#dt-reqdate-v');
@@ -178,8 +184,11 @@
                 data.Code = ddlSystem.val();
                 data.Phase = ddlPhase.val();
                 data.Title = txtTitle.val().trim();
-                data.Details = txtDetails.val().trim();
+                data.Details = txtDetails.val().trim() == "" ? " " : txtDetails.val().trim();
+                data.Remarks = txtRemarks.val().trim() == "" ? " " : txtRemarks.val().trim();
+
                 data.Difficulty = parseInt($("input[name=rad-difficulty-v]:checked").val());
+                data.Status = parseInt($("input[name=rad-status-v]:checked").val());
                 data.AssignedTo = ddlAssignedTo.val();
                 data.ReqBy = ddlReqBy.val();
                 data.ReqDate = dtReqDate.val();
@@ -206,7 +215,7 @@
     }
 
     function Done(id, status) {
-        if (status == 1) {
+        if (status == 2) {
             $.notify("This task is already [Done]", "error");
             return false;
         }
@@ -221,7 +230,7 @@
                 //var tid = $(this).data('id');
                 data = {}
                 data.id = key;
-                data.Remarks = $('#txt-remarks').val().trim() == "" ? "-" : $('#txt-remarks').val().trim();
+                data.Remarks = $('#txt-remarks-d').val().trim() == "" ? "-" : $('#txt-remarks-d').val().trim();
                 console.log(data);
                 console.log(key);
                 AjaxApi("@Url.Action("DoneTask", "Tasks")", '{obj:' + JSON.stringify(data) + '}')
@@ -240,6 +249,16 @@
         $('#modalCreateTask').on('show.bs.modal', function () {
             $('#dt-reqdate').val(new Date().toLocaleDateString('en-CA'));
         });
+
+
+        //$('.nav-item').hover(
+        //    function(){
+        //        $(this).find('.shaker').addClass(' shaking');
+        //    },
+        //    function(){
+        //        $(this).find('.shaker').removeClass('shaking');
+        //    }
+        //);
     });
 
 </script>
